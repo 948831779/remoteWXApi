@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>生成微信二维码</title>
+<link href="../css/bootstrap.css" rel="stylesheet" media="screen">
+<link href="../css/normalize.css" rel="stylesheet" media="screen">
+<script src="../js/jquery-2.1.4.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+	   <div class = "row">
+	         <button>生成二维码</button>
+	   </div>
+	    <div class = "row">
+	         <img  style="display: none; width: 200px; height: 200px;"/>
+	   </div>
+	   
+	</div>
+	
+</body>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	 $("button").bind("click",function(){
+		 $.ajax({
+				url:"../common/createQrCode.htm",
+				type:'POST',
+ 				async: false
+		 		,success:function(object){
+		  			  $("img").show().attr("src", object);
+		 			},
+				error:function(){
+		 			 alert("初始化失败！")
+				}
+			});
+	    });
+	
+ });
+</script>
+</html>

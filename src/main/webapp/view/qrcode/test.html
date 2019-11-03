@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<body>
+
+	<div class="container">
+	   <div class = "row">
+	         <button>点击</button>
+	   </div>
+	    <div class = "row">
+	         <img  style="display: none; width: 200px; height: 200px;"/>
+	   </div>
+	   
+	</div>
+	
+</body>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	 $("button").bind("click",function(){
+		 $.ajax({
+				url:"../common/createQrCode.htm",
+				type:'POST',
+ 				async: false
+		 		,success:function(object){
+		  			  $("img").show().attr("src", object);
+		 			},
+				error:function(){
+		 			 alert("初始化失败！")
+				}
+			});
+	    });
+	
+ });
+</script>
+</body>
+</html>
